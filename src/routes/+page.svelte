@@ -1,6 +1,16 @@
 <script>
 	import { text } from '@sveltejs/kit';
 	import Level from './level.svelte';
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        window.addEventListener('load', async () => {        
+            if (!puter.auth.isSignedIn()) {
+                puter.ui.authenticateWithPuter();/*. then((user)=>{
+					
+            });*/
+			}
+    })});
 	let range = (n) => [...Array(n).keys()];
 	let zestLevel = $state(0);
 	let textInput = $state('');
